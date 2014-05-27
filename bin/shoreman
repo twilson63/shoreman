@@ -12,8 +12,11 @@ if (!argv._[0]) { return console.log('file not found'); }
 
 var ports = seaport.connect(process.env.SEAPORT);
 var port = ports.register(process.env.SHOREMAN_APP);
+process.env.PORT = port;
 
-var ps = spawn(process.env.SHOREMAN_CMD, argv._.concat(port), { stdio: 'inherit', env: process.env });
+var ps = spawn(process.env.SHOREMAN_CMD, argv._, { stdio: 'inherit',
+  env: process.env
+});
 
 ps.on('exit', function () {
  process.exit(0);
