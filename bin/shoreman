@@ -15,7 +15,7 @@ var port = ports.register(process.env.SHOREMAN_APP);
 process.env.PORT = port;
 
 // create log file
-require('./rsyslog')({
+require('../rsyslog')({
   app: process.env.SHOREMAN_APP,
   logstash: process.env.LOGSTASH
 });
