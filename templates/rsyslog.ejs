@@ -1,0 +1,12 @@
+$ModLoad imfile   # Load the imfile input module
+$ModLoad imklog   # for reading kernel log messages
+$ModLoad imuxsock # for reading local syslog messages
+
+# Watch /var/log/<%= app %>.log
+$InputFileName /var/log/<%= app %>.log
+$InputFileTag <%= app %>:
+$InputFileStateFile <%= app %>
+$InputRunFileMonitor
+
+# Send everything to a logstash server named 'logstash' on port 514:
+*.* @@<%= logstash %>

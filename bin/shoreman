@@ -21,3 +21,14 @@ var ps = spawn(process.env.SHOREMAN_CMD, argv._, { stdio: 'inherit',
 ps.on('exit', function () {
  process.exit(0);
 });
+
+// create rsyslog for app
+var ejs = require('ejs');
+var fs = require('fs');
+var template = fs.readFileSync('../templates/rsyslog.ejs', 'utf-8');
+fs.writeFileSync(
+  '/etc/rsyslog.d/' + process.env.SHOREMAN_APP + '.conf',
+  ejs.render(template, {
+    app: process.env.SHOREMAN_APP,
+    logstash: process.env.LOGSTASH
+}));
