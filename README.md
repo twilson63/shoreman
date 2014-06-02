@@ -4,6 +4,9 @@ Shoreman is a nodejs application that registers with `seaport` to get a dynamic 
 
 
 ```
-shoreman [app]
+export SEAPORT=localhost:9090
+export SHOREMAN_CMD=node
+export SHOREMAN_APP=foo
+shoreman [server.js]
 ```
 
