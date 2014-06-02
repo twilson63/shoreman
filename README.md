@@ -10,3 +10,9 @@ export SHOREMAN_APP=foo
 shoreman [server.js]
 ```
 
+## rsyslog
+
+shoreman also creates a rsyslog file in the `rsyslog.d` directory.  if given the logstash server information:
+
+
+
